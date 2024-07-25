@@ -5,15 +5,15 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/tkwang0530/dependency-injection-demo/service"
+	"github.com/tkwang0530/dependency-injection-demo/service/todo"
 )
 
 type TodoHandler struct {
-	service service.TodoService
+	todoService todo.Service
 }
 
-func NewTodoHandler(service service.TodoService) *TodoHandler {
-	return &TodoHandler{service: service}
+func NewTodoHandler(todoService todo.Service) *TodoHandler {
+	return &TodoHandler{todoService: todoService}
 }
 
 func (h *TodoHandler) Add(c *gin.Context) {
@@ -24,12 +24,12 @@ func (h *TodoHandler) Add(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
-	id := h.service.Add(task.Task)
+	id := h.todoService.Add(task.Task)
 	c.JSON(http.StatusOK, gin.H{"id": id})
 }
 
 func (h *TodoHandler) GetAll(c *gin.Context) {
-	todos := h.service.GetAll()
+	todos := h.todoService.GetAll()
 	c.JSON(http.StatusOK, todos)
 }
 
@@ -39,6 +39,6 @@ func (h *TodoHandler) Delete(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid ID"})
 		return
 	}
-	h.service.Delete(id)
+	h.todoService.Delete(id)
 	c.Status(http.StatusNoContent)
 }

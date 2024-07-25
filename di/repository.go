@@ -1,10 +1,10 @@
 package di
 
 import (
-	"github.com/tkwang0530/dependency-injection-demo/repository"
+	"github.com/tkwang0530/dependency-injection-demo/repository/todo"
 	"go.uber.org/dig"
 )
 
 func ProvideRepositories(container *dig.Container) {
-	container.Provide(repository.NewTodoRepository)
+	container.Provide(todo.New)
 }
