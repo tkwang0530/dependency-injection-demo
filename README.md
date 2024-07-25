@@ -26,28 +26,32 @@ This project is a simple TODO list RESTful API using Go, Gin, and Uber's `dig` f
     The server will start on `http://localhost:8080`.
 
 ## Folder Structure
-- **main.go**: Entry point
-- **di/**: Dependency Injection setup
-  - **manager.go**: Centralized DI configuration
-  - **config.go**: Config dependencies
-  - **db.go**: Database dependencies
-  - **repository.go**: Repository dependencies
-  - **service.go**: Service dependencies
-  - **handler.go**: Handler dependencies
-- **config/**: Configuration
-  - **config.go**: Configuration settings
-- **db/**: Database layer
-  - **in_memory_db.go**: Mock in-memory database
-- **models/**: Data models
-  - **todo.go**: TODO model
-- **repository/**: Repository layer
-  - **todo_repository.go**: TODO repository implementation
-- **service/**: Service layer
-  - **todo_service.go**: TODO service implementation
-- **handler/**: HTTP handlers
-  - **todo_handler.go**: TODO HTTP handler
-- **router/**: Router setup
-  - **router.go**: Gin router setup
+- **main.go**: The entry point of the application.
+- **config/**: Contains configuration settings.
+  - **config.go**: Defines configuration settings.
+- **db/**: Database layer.
+  - **in_memory_db.go**: Implements a mock in-memory database.
+- **di/**: Dependency Injection setup.
+  - **config.go**: Configures dependencies related to configuration settings.
+  - **db.go**: Configures database dependencies.
+  - **handler.go**: Configures HTTP handler dependencies.
+  - **manager.go**: Centralized Dependency Injection configuration.
+  - **repository.go**: Configures repository dependencies.
+  - **service.go**: Configures service dependencies.
+- **handler/**: HTTP handlers.
+  - **todo_handler.go**: Handles HTTP requests for TODO items.
+- **models/**: Data models.
+  - **todo.go**: Defines the TODO model.
+- **repository/**: Repository layer.
+  - **todo/**: Contains the implementation of the TODO repository.
+    - **impl.go**: Implements the repository interface.
+    - **todo.go**: Defines the repository interface.
+- **router/**: Router setup.
+  - **router.go**: Sets up the Gin router and routes.
+- **service/**: Service layer.
+  - **todo/**: Contains the implementation of the TODO service.
+    - **impl.go**: Implements the service interface.
+    - **todo.go**: Defines the service interface.
 
 
 ## Features
